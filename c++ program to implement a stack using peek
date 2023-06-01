@@ -1,0 +1,88 @@
+//program to implement a stack in c++ using functions push,pop,peek,display//
+1) #include<iostream>
+using namespace std;
+
+#define size 30
+class stack
+{
+private:
+int top;
+int arr[size];
+int item;
+public:
+stack()
+{
+top=0;
+}
+void push()
+{
+if(top==size)
+cout<<"overflow\n";
+else
+{
+cout<<"enter item\n";
+cin>>item;
+arr[top++]=item;
+cout<<"item pushed\n";
+}
+}
+void pop()
+{
+if(top==0)
+cout<<"underflow\n";
+else{
+top--;
+cout<<"item popped\n";
+}
+}
+void display()
+{
+if(top==0)
+cout<<"stack is empty\n";
+else
+{
+for(int i=0; i<top;i++)
+{
+cout<<arr[i];
+}
+}
+}
+void peek()
+{
+if(top==0)
+cout<<"stack is empty\n";
+else
+cout<<arr[top];
+}
+};
+
+int main()
+{
+int choice, exit_p=1;
+stack obj;
+cout<<"\nimplementation of stack";
+do{
+cout<<"\n stack main menu";
+cout<<"\n1.push\n2.pop\n3.display\n4.peek\n5.others to exit";
+cout<<"\n enter your choice:";
+cin>>choice;
+switch(choice){
+case 1:
+obj.push();
+break;
+case 2:
+obj.pop();
+case 3:
+obj.display();
+break;
+case 4:
+obj.peek();
+break;
+default:
+exit_p=0;
+break;
+}
+}
+while(exit_p);
+return 0;
+}
