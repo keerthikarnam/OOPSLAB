@@ -1,0 +1,35 @@
+// program to keep track of no. of objects//
+#include<iostream>
+using namespace std;
+class counter{
+		public:
+				static int count;
+				counter()
+				{
+					count++;
+				}
+					~counter()
+					{
+						count--;
+					}
+			};
+				int counter::count;
+				void f();
+					int main(void)
+					{
+						counter o1;
+						cout<<"objects in existence:";
+						cout<<counter::count<<"\n";
+						counter o2;
+						cout<<"objects in existence:";
+						cout<<counter::count<<"\n";
+						f();
+						cout<<"objects in existence:";
+						cout<<counter::count<<"\n";
+						return 0;
+				    }
+					void f(){
+							counter temp;
+							cout<<"objects in existence";
+							cout<<counter::count<<"\n";
+							}
