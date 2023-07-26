@@ -1,0 +1,81 @@
+//program to insert an element from front and also delete from the front list//
+#include<iostream>
+#include<new>
+using namespace std;
+struct nod{
+			int info;
+			struct nod*next;
+			};
+			typedef struct nod node;
+			class list{
+							node *f;
+							public :
+							list()
+							{
+							  f=0;
+							}
+							 void ins(int num)
+							{
+							  node *p=new node;
+							  p->info=num;
+							  p->next=f;
+                            }
+							void del()
+							{	
+								node *temp=f;
+								if(f==0)
+								cout<<"\n no elements to delete\n";
+								else{
+
+									cout<<"\n the deleted elements is:\n"<<f->info;
+									f=temp;
+									if(temp->next!=0)
+									  {
+										temp=temp->next;
+									  }
+										delete temp;
+										cout<<"\n deletion successfull\n";
+									}
+										return;
+							}
+							void disp(){
+											node *temp=f;
+											if(f==0)
+											cout<<"\n list is empty\n";
+											else{
+											cout<<"\n elements in the list are:";
+											while(temp!=0)
+											{
+												cout<<" "<<temp->info;
+												temp=temp->next;
+											}
+									}
+					}
+};
+  			int main()
+			{
+				int num,ch=1;
+				list ob;
+				cout<<"\n!!!!!!!linear link list!!!!\n";
+				cout<<"\n 1]insert\n2]delete\n3]exit";
+				while(ch)
+				{
+					cout<<"enter your choice\n";
+					cin>>ch;
+					switch(ch)
+					{
+						case 1: cout<<"\n enter no. to beinserted\n";
+						cin>>num;
+						ob.ins(num);
+						ob.disp();
+						break;
+						case 2:ob.del();
+						ob.disp();
+						break;
+						case 3: return 0;
+						deafault:
+						cout<<"invalid choice\n";
+						break;
+					}
+			}
+         }
