@@ -1,0 +1,46 @@
+#include<iostream>
+#include<fstream>
+using namespace std;
+struct bank {
+char name[20];
+double bal;
+long acc;
+};
+int main()
+{
+int n,i;
+cout<<"enter no. of entries \n";
+cin>>n;
+struct bank b[n];
+ofstream op("bank.txt",ios::out);
+if(!op)
+{
+cout<<"cannot open file \n";
+return 1;
+}
+for(i=0;i<n;i++)
+{
+cout<<"enter a/c no. name & bal of customer :"<<i+1<<"\n";
+cin>>b[i].acc>>b[i].name>>b[i].bal;
+op.write((char *)&b[i],sizeof(struct bank));
+}
+op.close();
+ifstream ip("bank.txt",ios::in);
+if(!ip)
+{
+cout<<"file doesnt exixts \n";
+return 1;
+}
+for(i=0;i<n;i++)
+{
+if(ip)
+{
+ip.read((char *)&b[i],sizeof(struct bank));
+cout<<"a/c no :"<<b[i].acc<<"\n";
+cout<<"name :"<<b[i].name<<"\n";
+cout<<"balance (in inr) :"<<b[i].bal<<"\n";
+}
+}
+ip.close();
+return 0;
+}
